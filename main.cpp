@@ -1,7 +1,33 @@
 #include <iostream>
+#include <ncurses.h>
 
-int main(int argc, char* argv[])
+// ncurses initialization / destruction functions
+class Scoped_Screen
 {
-    std::cout << "snek\n";
+public:
+    Scoped_Screen();
+    ~Scoped_Screen();
+};
+
+Scoped_Screen::Scoped_Screen()
+{
+    initscr();
+    cbreak();
+    noecho();
+    clear();
+    refresh();
+}
+
+Scoped_Screen::~Scoped_Screen()
+{
+    endwin();
+}
+
+int main(int argc, char *argv[])
+{
+    Scoped_Screen s;
+
+    getch();
+
     return 0;
 }
