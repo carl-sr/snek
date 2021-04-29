@@ -160,5 +160,11 @@ int main(int argc, char *argv[])
 
     } while (c != 'q');
 
+    clear();
+    mvprintw(height/2, width/2 - 5, "FINAL SCORE");
+    mvprintw(height/2 - 1, width/2 - 1, "%i", score);
+    timeout(-1);
+    getch();
+
     return 0;
 }
